@@ -1,7 +1,6 @@
 # project/celery.py
 from __future__ import absolute_import,unicode_literals
 import os
-from time import timezone
 from celery import Celery
 from django.conf import settings
 

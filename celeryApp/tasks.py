@@ -12,7 +12,7 @@ def createcsv(self,numberofrow):
     writer = csv.writer(open(settings.MEDIA_ROOT+"file"+f"{numberofrow}"+".csv", "w"))
     for i in range(numberofrow):
         writer.writerow(['1002', 'Amit', 'Mukharji', 'LA', '"Testing"'])
-    filename = 'file'
+    filename = "file"+f"{numberofrow}"+".csv"
     dataCount = numberofrow
     data = GenerateFileLog.objects.create(filename=filename,dataCount=dataCount)
     data.save()
