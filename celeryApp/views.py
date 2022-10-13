@@ -12,6 +12,7 @@ from .tasks import createcsv
 
 def test(request):  
     # call the test_function using delay, calling task  
+    FileName = input('Enter the the file name ?')
     numberOfRow = int(input('Enter the number of rows ? '))
-    createcsv.delay(numberOfRow)
+    createcsv.delay(FileName,numberOfRow)
     return HttpResponse("hai it is done")

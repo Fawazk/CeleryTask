@@ -8,12 +8,14 @@ import time
 
 
 @shared_task(bind=True)
-def createcsv(self,numberofrow):
-    writer = csv.writer(open(settings.MEDIA_ROOT+"file"+f"{numberofrow}"+".csv", "w"))
+def createcsv(self,FileName,numberofrow):
+    # writer = csv.writer(open(settings.MEDIA_ROOT+"file"+f"{numberofrow}"+".csv", "w"))
+    filename = f"{FileName}.csv"
+    writer = csv.writer(open(settings.MEDIA_ROOT+""+filename, "w"))
     for i in range(numberofrow):
         writer.writerow(['1002', 'Amit', 'Mukharji', 'LA', '"Testing"'])
-    filename = "file"+f"{numberofrow}"+".csv"
+    filename = filename
     dataCount = numberofrow
     data = GenerateFileLog.objects.create(filename=filename,dataCount=dataCount)
     data.save()
-    return f"{numberofrow} rows created"
+    return f"{filename} rows created"
